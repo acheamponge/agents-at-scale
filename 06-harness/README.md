@@ -47,3 +47,9 @@ That runs four pieces of code inside the container: list the environment (empty)
 - The naive, host-side `run_python` from the course is deliberately not in this repository. Its entire body was a `subprocess.run(["python", "-c", code])` on the host. The sandbox is the tool.
 - The course's compaction summariser was Nemotron 3 Nano. That model was deprecated on 2 November 2026 with Nemotron 3.5 Lightning as the replacement, which is why the default here is Lightning.
 - `count_tokens` uses the four-characters-per-token estimate from the course. The threshold is 70 percent of the window on purpose, so being within ten percent is enough.
+
+## Verified
+
+- `sandbox.py` ran against Docker: the container sees only the image's own environment variables, no secrets, name resolution fails for example.com, and the fork proof dies at the PID limit.
+- `offload`, `LoopGuard` (nudge on the second call, `Stuck` on the third) and the hooks' grounding check were exercised offline.
+- `loop.py` imports cleanly but was not run end to end, because no API key was available in the build environment.

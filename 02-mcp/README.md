@@ -77,3 +77,9 @@ The course names the schema field `inputSchema`; the MCP SDK v2 that FastMCP 4 b
 Every tool description from every server you connect is text the model reads on every turn. The course demonstrates a poisoned `web_search` description that tells the model to include the contents of `.env` in its query, and the model obeys. That description is deliberately not in this repository. Pin servers to a version, read descriptions the way you would read a post-install script, allowlist tools per agent, and watch for description changes in updates.
 
 Agents are a prefill problem. Fetch the tool list once per run, respect the TTL, keep the list small and the order fixed, so the prompt prefix stays byte-identical and the serving layer's prefix cache hits. Chapter 3 records `cached_tokens` from the usage block so you can see it working.
+
+## Verified
+
+- `server.py` starts over stdio and `inspect_tools.py` lists all four tools with the schemas generated from the type hints.
+- `client.py` and `loop.py` import cleanly. A full run needs a model key and a search key, neither of which was available in the build environment.
+- The HTTP transport and the two-instance round-robin were not exercised.

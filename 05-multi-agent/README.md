@@ -37,3 +37,8 @@ Each researcher's findings land in `runs/team/<slug>/findings/<subquestion>.json
 - One process-wide semaphore, `03-agent/shared.py`, bounds the request rate across the service, the team and the evals. Per-team limits add up; a process-wide one does not.
 - All researchers share a byte-identical system prompt and tool list, so the serving layer's prefix cache serves the prefill once. The subquestion goes in the user message, after the shared prefix.
 - The telephone game variant from the course, where researchers return whole transcripts, is described rather than shipped: the writer's prompt grows by tens of thousands of tokens and it cites a URL nobody fetched.
+
+## Verified
+
+- `team.py` imports cleanly, builds the four agents with the `crusoe:` model strings from `config.toml`, and resolves them to the Crusoe provider shipped with Pydantic AI.
+- No team run was made, because no API key was available in the build environment.

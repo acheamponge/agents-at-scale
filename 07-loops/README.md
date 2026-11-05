@@ -53,3 +53,8 @@ Spend caps and quotas at the provider, on a project and key used only by the loo
 
 - `verify` compares problems by a normalised key (source number plus kind) rather than by exact string, so the verifier phrasing the same problem differently does not burn another attempt.
 - Dollars per run come from `03-agent/prices.toml`; until it is filled in, `spent_usd` stays at zero and only the attempt and minute budgets bind.
+
+## Verified
+
+- `load_state`, `save_state` and `problem_key` were exercised offline; two differently worded verifier problems normalise to the same key.
+- `loop.py` imports cleanly. No iteration was run, even in dry-run mode, because no API key was available in the build environment.

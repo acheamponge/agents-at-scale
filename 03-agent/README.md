@@ -77,3 +77,9 @@ docker run --env-file .env -p 8080:8080 brief-service
 - `cost.py` returns zero until `prices.toml` is filled in. Every run still records the token counts the cost is computed from.
 - The trace records the full tool result on disk and truncates only the copy written to the JSONL line, so chapter 4 graders can check quotes against the whole fetched page.
 - `vllm.sh serve` is meant to run on the GPU VM; `vllm.sh` with no argument runs the agent from your laptop against it. Look up the tool-call parser for the model family in the vLLM docs rather than guessing.
+
+## Verified
+
+- Every file imports cleanly against the pinned dependencies.
+- `Trace`, `RunResult.save` and `RunResult.load`, `render` and `cost_usd` were exercised offline with a synthetic run.
+- `agent.py`, `structured_output.py`, the two Pydantic AI scripts, `service.py` and `vllm.sh` were not run end to end, because no API key or GPU was available in the build environment.

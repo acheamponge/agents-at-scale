@@ -67,3 +67,8 @@ uv run python 04-evals/tool_errors.py "runs/**/trace.jsonl"
 - Dollars per passing task reads prices from `03-agent/prices.toml`. Until that file is filled in the column is zero.
 - `urls_resolve` falls back from HEAD to a ranged GET and caches each URL for the process, because a flaky grader is worse than none.
 - The replay cache that lets the smoke eval run with no key is not part of this repository.
+
+## Verified
+
+- All six graders were exercised offline against a synthetic run: they pass on a grounded brief, and `grounding_problems` reports a source whose URL was never fetched. `urls_resolve` was skipped offline because it makes HTTP requests.
+- `run.py`, `judge.py` and `tool_errors.py` import cleanly but were not run against the endpoint, because no API key was available in the build environment.

@@ -41,3 +41,9 @@ Set `VERBOSE=0` to hide the per-call trace that `loop.py` prints to stderr.
 - The `calc` tool uses `eval`. It is a teaching trap, named as such in the course. Chapter 6 replaces it with a sandbox. Do not ship it.
 - `behaviours.py reasoning` only prints reasoning when the model returns a `reasoning_content` field. Whether to send that field back on the next turn depends on the model family; read the model card.
 - `failures.py` reproduces the three failures by constructing the tool calls directly instead of replaying cached model responses, so it runs offline.
+
+## Verified
+
+- `failures.py` ran and produced the three error tool results and the good one.
+- `loop.py`, `descriptions.py` and `behaviours.py` import cleanly. They were not run end to end, because no API key was available in the build environment; run them once with your key before recording.
+- `call.sh` and `compare_models.sh` were not run for the same reason.
